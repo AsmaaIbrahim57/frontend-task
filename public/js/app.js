@@ -5352,10 +5352,18 @@ var home = function home() {
   return __webpack_require__.e(/*! import() */ "resources_js_components_home_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../components/home.vue */ "./resources/js/components/home.vue"));
 };
 
+var stories = function stories() {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_stories_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../components/stories.vue */ "./resources/js/components/stories.vue"));
+};
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ([{
   path: '/home',
   component: home,
   name: 'home'
+}, {
+  path: '/stories',
+  component: stories,
+  name: 'stories'
 }]);
 
 /***/ }),
@@ -43135,7 +43143,7 @@ module.exports = JSON.parse('{"_args":[["axios@0.21.4","/opt/lampp/htdocs/fronte
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_components_home_vue") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_home_vue":1,"resources_js_components_stories_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

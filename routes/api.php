@@ -15,4 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/features','App\Http\Controllers\ApiController@home');
+Route::get('/stories','App\Http\Controllers\ApiController@stories');
 

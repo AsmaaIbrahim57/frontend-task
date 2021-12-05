@@ -1,4 +1,5 @@
-const home = () =>import ( '../components/home.vue')
+const home = () =>import ( '../components/home.vue');
+const stories = ()=>import ('../components/stories.vue');
 
 export default [
     {
@@ -6,4 +7,9 @@ export default [
         component: home,
         name: 'home',
     },
+    {
+        path:'/stories',
+        component: stories,
+        name: 'stories'
+    }
 ]
