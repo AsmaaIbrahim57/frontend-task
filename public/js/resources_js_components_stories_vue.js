@@ -100,6 +100,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -109,7 +122,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       unseenStories: [],
       seenStories: [],
-      user: {}
+      user: {},
+      loading: true,
+      responseError: ""
     };
   },
   created: function created() {
@@ -127,8 +142,16 @@ __webpack_require__.r(__webpack_exports__);
         _this.seenStories = res.data.stories.filter(function (story) {
           return story.seen == true;
         });
+        _this.loading = false;
+        _this.responseError = "";
       })["catch"](function (err) {
-        console.log(err);
+        if (err.response.status != 500 && err.response.data) {
+          _this.responseError = err.response.data.message;
+        } else {
+          _this.responseError = "Whoops! Something went wrong. Please check your internet connection and try again later.";
+        }
+
+        _this.loading = false;
       });
     }
   }
@@ -175,7 +198,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-0d64ff50] {\n  background: #eee;\n  margin-top: 20px;\n}\n.widget[data-v-0d64ff50] {\n  padding: 0;\n  margin-top: 0;\n  margin-bottom: 0;\n  border-radius: 6px;\n  box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);\n}\n.widget.box .widget-header[data-v-0d64ff50] {\n  background: #fff;\n  padding: 0px 8px 0px;\n  border-top-right-radius: 6px;\n  border-top-left-radius: 6px;\n}\n.widget .widget-header[data-v-0d64ff50] {\n  border-bottom: 0px solid #f1f2f3;\n}\n.widget.box .widget-header[data-v-0d64ff50] {\n  background: #fff;\n  padding: 0px 8px 0px;\n  border-top-right-radius: 6px;\n  border-top-left-radius: 6px;\n}\n.widget .widget-header[data-v-0d64ff50] {\n  border-bottom: 0px solid #f1f2f3;\n}\n.widget .widget-header[data-v-0d64ff50]:after {\n  clear: both;\n}\n.widget .widget-header[data-v-0d64ff50]:before,\n.widget .widget-header[data-v-0d64ff50]:after {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.widget-content-area[data-v-0d64ff50] {\n  padding: 20px;\n  position: relative;\n  background-color: #fff;\n  border-bottom-left-radius: 6px;\n  border-bottom-right-radius: 6px;\n}\n.statbox .widget-content[data-v-0d64ff50]:before,\n.statbox .widget-content[data-v-0d64ff50]:after {\n  display: table;\n  content: \"\";\n  line-height: 0;\n  clear: both;\n}\n.statbox .widget-content[data-v-0d64ff50]:before,\n.statbox .widget-content[data-v-0d64ff50]:after {\n  display: table;\n  content: \"\";\n  line-height: 0;\n  clear: both;\n}\n.story-container-2 p.divider[data-v-0d64ff50] {\n  margin: 10px 0px 10px 0px;\n  font-weight: 600;\n  font-size: 12px;\n  color: #404040;\n}\n.widget.box .widget-footer[data-v-0d64ff50] {\n  padding: 2rem 2.25rem;\n  background-color: #ffffff;\n  border-top: 1px solid #ebedf3;\n}\n.bg-light-primary[data-v-0d64ff50] {\n  background-color: #f6f1ff !important;\n  border-color: #f6f1ff;\n  color: #5526ab;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "body[data-v-0d64ff50] {\n  background: #eee;\n  margin-top: 20px;\n}\n.widget[data-v-0d64ff50] {\n  padding: 0;\n  margin-top: 0;\n  margin-bottom: 0;\n  border-radius: 6px;\n  box-shadow: 0 4px 6px 0 rgba(85, 85, 85, 0.08), 0 1px 20px 0 rgba(0, 0, 0, 0.07), 0px 1px 11px 0px rgba(0, 0, 0, 0.07);\n}\n.widget.box .widget-header[data-v-0d64ff50] {\n  background: #fff;\n  padding: 0px 8px 0px;\n  border-top-right-radius: 6px;\n  border-top-left-radius: 6px;\n}\n.widget .widget-header[data-v-0d64ff50] {\n  border-bottom: 0px solid #f1f2f3;\n}\n.widget.box .widget-header[data-v-0d64ff50] {\n  background: #fff;\n  padding: 0px 8px 0px;\n  border-top-right-radius: 6px;\n  border-top-left-radius: 6px;\n}\n.widget .widget-header[data-v-0d64ff50] {\n  border-bottom: 0px solid #f1f2f3;\n}\n.widget .widget-header[data-v-0d64ff50]:after {\n  clear: both;\n}\n.widget .widget-header[data-v-0d64ff50]:before,\n.widget .widget-header[data-v-0d64ff50]:after {\n  display: table;\n  content: \"\";\n  line-height: 0;\n}\n.widget-content-area[data-v-0d64ff50] {\n  padding: 20px;\n  position: relative;\n  background-color: #fff;\n  border-bottom-left-radius: 6px;\n  border-bottom-right-radius: 6px;\n}\n.statbox .widget-content[data-v-0d64ff50]:before,\n.statbox .widget-content[data-v-0d64ff50]:after {\n  display: table;\n  content: \"\";\n  line-height: 0;\n  clear: both;\n}\n.statbox .widget-content[data-v-0d64ff50]:before,\n.statbox .widget-content[data-v-0d64ff50]:after {\n  display: table;\n  content: \"\";\n  line-height: 0;\n  clear: both;\n}\n.story-container-2 p.divider[data-v-0d64ff50] {\n  margin: 10px 0px 10px 0px;\n  font-weight: 600;\n  font-size: 12px;\n  color: #404040;\n}\n.widget.box .widget-footer[data-v-0d64ff50] {\n  padding: 2rem 2.25rem;\n  background-color: #ffffff;\n  border-top: 1px solid #ebedf3;\n}\n.bg-light-primary[data-v-0d64ff50] {\n  background-color: #f6f1ff !important;\n  border-color: #f6f1ff;\n  color: #5526ab;\n}\n\n/* Custom */\n.loading[data-v-0d64ff50] {\n  color: gray;\n  padding: 1rem;\n}\n.header[data-v-0d64ff50] {\n  margin-top: 1rem;\n  margin-left: 0.2rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -823,58 +846,122 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-4 layout-spacing" }, [
-        _c("div", { staticClass: "statbox widget box box-shadow" }, [
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "widget-content widget-content-area" }, [
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "col-lg-12 col-md-12 col-sm-12" }, [
-                _c(
-                  "div",
-                  { staticClass: "tabcontent", attrs: { id: "content_2" } },
-                  [
-                    _c(
-                      "div",
-                      { staticClass: "story-container-2" },
-                      [
-                        _c("story", {
-                          attrs: { story: _vm.user, isCurrentUser: true },
-                        }),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "divider" }, [
-                          _vm._v("Recently Added"),
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.unseenStories, function (story, index) {
-                          return _c("story", {
-                            key: "unseen-" + index,
-                            attrs: { story: story, isCurrentUser: false },
-                          })
-                        }),
-                        _vm._v(" "),
-                        _c("p", { staticClass: "divider" }, [
-                          _vm._v("Viewed Stories"),
-                        ]),
-                        _vm._v(" "),
-                        _vm._l(_vm.seenStories, function (story, index) {
-                          return _c("story", {
-                            key: "seen-" + index,
-                            attrs: { story: story, isCurrentUser: false },
-                          })
-                        }),
-                      ],
-                      2
-                    ),
-                  ]
-                ),
+      _vm.responseError == "" && _vm.loading == false
+        ? _c("div", { staticClass: "col-lg-4 layout-spacing" }, [
+            _c("div", { staticClass: "statbox widget box box-shadow" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm.loading == false
+                ? _c(
+                    "div",
+                    { staticClass: "widget-content widget-content-area" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-lg-12 col-md-12 col-sm-12" },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "tabcontent",
+                                attrs: { id: "content_2" },
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "story-container-2" },
+                                  [
+                                    _c("story", {
+                                      attrs: {
+                                        story: _vm.user,
+                                        isCurrentUser: true,
+                                      },
+                                    }),
+                                    _vm._v(" "),
+                                    _c("p", { staticClass: "divider" }, [
+                                      _vm._v("Recently Added"),
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(
+                                      _vm.unseenStories,
+                                      function (story, index) {
+                                        return _c("story", {
+                                          key: "unseen-" + index,
+                                          attrs: {
+                                            story: story,
+                                            isCurrentUser: false,
+                                          },
+                                        })
+                                      }
+                                    ),
+                                    _vm._v(" "),
+                                    _c("p", { staticClass: "divider" }, [
+                                      _vm._v("Viewed Stories"),
+                                    ]),
+                                    _vm._v(" "),
+                                    _vm._l(
+                                      _vm.seenStories,
+                                      function (story, index) {
+                                        return _c("story", {
+                                          key: "seen-" + index,
+                                          attrs: {
+                                            story: story,
+                                            isCurrentUser: false,
+                                          },
+                                        })
+                                      }
+                                    ),
+                                  ],
+                                  2
+                                ),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ]),
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.loading == false
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "widget-footer p-2 text-center bg-light-primary",
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-primary strong",
+                          attrs: { href: "#" },
+                        },
+                        [_vm._v("View All")]
+                      ),
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "container" }, [
+                _vm.loading == true
+                  ? _c("p", { staticClass: "loading" }, [
+                      _vm._v("Fetching data. Please wait..."),
+                    ])
+                  : _vm._e(),
               ]),
             ]),
-          ]),
-          _vm._v(" "),
-          _vm._m(1),
-        ]),
-      ]),
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.responseError && _vm.loading == false
+        ? _c(
+            "div",
+            { staticClass: "alert alert-danger", attrs: { role: "alert" } },
+            [_vm._v("\n      " + _vm._s(_vm.responseError) + "\n    ")]
+          )
+        : _vm._e(),
     ]),
   ])
 }
@@ -886,24 +973,10 @@ var staticRenderFns = [
     return _c("div", { staticClass: "widget-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-xl-12 col-md-12 col-sm-12 col-12" }, [
-          _c("h4", { staticClass: "pb-0" }, [_vm._v("Stories")]),
+          _c("h4", { staticClass: "pb-0 header" }, [_vm._v("Stories")]),
         ]),
       ]),
     ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "widget-footer p-2 text-center bg-light-primary" },
-      [
-        _c("a", { staticClass: "text-primary strong", attrs: { href: "#" } }, [
-          _vm._v("View All"),
-        ]),
-      ]
-    )
   },
 ]
 render._withStripped = true

@@ -1,16 +1,16 @@
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-lg-4 layout-spacing">
+      <div class="col-lg-4 layout-spacing" v-if="responseError == '' && loading == false">
         <div class="statbox widget box box-shadow">
           <div class="widget-header">
             <div class="row">
               <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                <h4 class="pb-0">Stories</h4>
+                <h4 class="pb-0 header">Stories</h4>
               </div>
             </div>
           </div>
-          <div class="widget-content widget-content-area">
+          <div class="widget-content widget-content-area" v-if="loading == false">
             <div class="row">
               <div class="col-lg-12 col-md-12 col-sm-12">
                 <div id="content_2" class="tabcontent">
@@ -35,10 +35,23 @@
               </div>
             </div>
           </div>
-          <div class="widget-footer p-2 text-center bg-light-primary">
+          <div
+            class="widget-footer p-2 text-center bg-light-primary"
+            v-if="loading == false"
+          >
             <a class="text-primary strong" href="#">View All</a>
           </div>
+          <div class="container">
+            <p class="loading" v-if="loading == true">Fetching data. Please wait...</p>
+          </div>
         </div>
+      </div>
+      <div
+        class="alert alert-danger"
+        role="alert"
+        v-if="responseError && loading == false"
+      >
+        {{ responseError }}
       </div>
     </div>
   </div>
@@ -55,6 +68,8 @@ export default {
       unseenStories: [],
       seenStories: [],
       user: {},
+      loading: true,
+      responseError: "",
     };
   },
   created() {
@@ -68,9 +83,17 @@ export default {
           this.user = res.data.currentUser;
           this.unseenStories = res.data.stories.filter((story) => story.seen == false);
           this.seenStories = res.data.stories.filter((story) => story.seen == true);
+          this.loading = false;
+          this.responseError = "";
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response.status != 500 && err.response.data) {
+            this.responseError = err.response.data.message;
+          } else {
+            this.responseError =
+              "Whoops! Something went wrong. Please check your internet connection and try again later.";
+          }
+          this.loading = false;
         });
     },
   },
@@ -159,5 +182,15 @@ body {
   background-color: #f6f1ff !important;
   border-color: #f6f1ff;
   color: #5526ab;
+}
+
+/* Custom */
+.loading {
+  color: gray;
+  padding: 1rem;
+}
+.header {
+  margin-top: 1rem;
+  margin-left: 0.2rem;
 }
 </style>

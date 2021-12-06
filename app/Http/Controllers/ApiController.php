@@ -92,6 +92,12 @@ class ApiController extends Controller
                 'seen' => true
             ],
             [
+                'name'=>'Reed Olive',
+                'avatar'=>'https://bootdey.com/img/Content/avatar/avatar2.png',
+                'time' => 'Today, 12:33',
+                'seen' => true
+            ],
+            [
                 'name'=>'Katharina Nielsen',
                 'avatar'=>'https://bootdey.com/img/Content/avatar/avatar3.png',
                 'time' => 'Today, 12:33',
@@ -116,7 +122,31 @@ class ApiController extends Controller
                 'avatar'=>'https://bootdey.com/img/Content/avatar/avatar2.png',
                 'time' => 'Today, 02:33',
                 'seen' => false
-            ]
+            ],
+            [
+                'name'=>'Kareen Hesham',
+                'avatar'=>'https://bootdey.com/img/Content/avatar/avatar3.png',
+                'time' => 'Today, 02:33',
+                'seen' => false
+            ],
+            [
+                'name'=>'Hassan Abdelfattah',
+                'avatar'=>'https://bootdey.com/img/Content/avatar/avatar7.png',
+                'time' => 'Today, 02:33',
+                'seen' => false
+            ],
+            [
+                'name'=>'Ahmed Tarek',
+                'avatar'=>'https://bootdey.com/img/Content/avatar/avatar2.png',
+                'time' => 'Today, 02:33',
+                'seen' => false
+            ],
+            [
+                'name'=>'Hossam Haassan',
+                'avatar'=>'https://bootdey.com/img/Content/avatar/avatar3.png',
+                'time' => 'Today, 02:33',
+                'seen' => false
+            ],
         ];
 
         return response()->json(['stories'=>$stories,'currentUser'=>$user]);
