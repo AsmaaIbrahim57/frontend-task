@@ -7,7 +7,7 @@ FE: Vue.js
 
 ## Install
 1. Open htdocs folder on your local machine
-2. Git clone https://github.com/AsmaaIbrahim57
+2. git clone https://github.com/AsmaaIbrahim57
 3. Open the code in your IDE
 4. Rename the file .env.example to .env
 5. Create a db for the project
